@@ -99,9 +99,9 @@ export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
       },
     };
 
-    console.log("before!")
+
     const { data } = await axios.put(`/api/orders/${id}/pay/`, paymentResult,config);
-    console.log({data})
+  
     dispatch({
       type: ORDER_PAY_SUCCESS,
       payload: data,

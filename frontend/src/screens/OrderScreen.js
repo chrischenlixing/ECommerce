@@ -59,13 +59,12 @@ function OrderScreen() {
   useEffect(() => {
     if (!order || successPay || order._id !== Number(orderId)) {
         dispatch({type : ORDER_PAY_RESET});
-        console.log({orderId})
       dispatch(getOrderDetails(orderId));
       
     } else if (!order.isPaid){
         if(!window.paypal){
             addPayPalScript()
-            console.log('hello')
+
         } else{
             setSdkReady(true)
         }
