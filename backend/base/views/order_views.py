@@ -1,5 +1,6 @@
+from datetime import datetime
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import HttpResponseServerError, JsonResponse
 from base.products import products
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -62,3 +63,34 @@ def addOrderItems(request):
 
         serializer = OrderSerializer(order, many=False)
         return Response(serializer.data)
+    
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getOrderById(request,pk):
+    user = request.user
+    try:
+        order = Order.objects.get(_id = pk)
+        if user.is_staff or order.user == user:
+            serializer = OrderSerializer(order,many = False)
+            return Response(serializer.data)
+        else:
+            Response({'detail' : 'Not authorized to view this order'},status=status.HTTP_400_BAD_REQUEST)
+    except:
+            Response({'detail' : 'Order does not exists'},status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def updateOrderToPaid(request, pk):
+    try:
+        print('testorder')
+        order = Order.objects.get(_id=pk)
+        order.isPaid = True
+        order.paidAt = datetime.now()
+        order.save()
+
+        return Response('Order was paid')
+    except Exception as e:
+        print('error!')
+        print(e)  # Log the exception for debugging
+        return HttpResponseServerError("BigInternal Server Error")
