@@ -1,4 +1,5 @@
 from datetime import datetime
+from django.utils import timezone
 from django.shortcuts import render
 from django.http import HttpResponseServerError, JsonResponse
 from base.products import products
@@ -110,7 +111,7 @@ def updateOrderToDelivered(request, pk):
     order = Order.objects.get(_id=pk)
 
     order.isDelivered = True
-    order.deliveredAt = datetime.now()
+    order.deliveredAt = timezone.now()
     order.save()
 
     return Response('Order was delivered')

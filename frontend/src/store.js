@@ -3,17 +3,22 @@ import thunk from 'redux-thunk'
 
 import {productListReducers,productDetailsReducer} from './reducers/productReducers'
 import { cartReducer } from './reducers/cartReducer' 
-import {userLoginReducers, userRegisterReducers,userDetailsReducers, userUpdateProfileReducers} from './reducers/userReducers'
+import {userLoginReducers, userRegisterReducers,userDetailsReducers, userUpdateProfileReducers, userUpdateReducer, userDeleteReducer, userListReducer } from './reducers/userReducers'
 import { orderCreateReducers, orderDetailsReducer, orderPayReducer,orderListMyReducer,orderListReducer,orderDeliverReducer } from './reducers/orderReducer'
 
 const reducer = combineReducers({
     productList: productListReducers,
     productDetails: productDetailsReducer,
     cart : cartReducer,
+
     userLogin: userLoginReducers,
     userRegister:userRegisterReducers,
     userDetails:userDetailsReducers,
     userUpdateProfile: userUpdateProfileReducers,
+    userList: userListReducer,
+    userDelete: userDeleteReducer,
+    userUpdate: userUpdateReducer,
+
     orderCreate :orderCreateReducers,
     orderDetails: orderDetailsReducer,
     orderPay : orderPayReducer,
