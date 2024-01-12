@@ -1,3 +1,4 @@
+import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
 import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_FAIL,
@@ -54,6 +55,7 @@ export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: USER_LOGOUT });
   dispatch({type:USER_UPDATE_PROFILE_RESET})
+  dispatch({type:ORDER_LIST_MY_RESET})
 };
 
 
