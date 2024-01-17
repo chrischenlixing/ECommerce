@@ -5,6 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import {LinkContainer} from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import {logout} from '../actions/userActions'
+import SearchBox from './SearchBox';
 
 function BasicExample() {
   const userLogin = useSelector(state => state.userLogin)
@@ -22,9 +23,10 @@ function BasicExample() {
         <LinkContainer to='/'>
         <Navbar.Brand>ProShop</Navbar.Brand>
         </LinkContainer>
-        
+        <SearchBox/>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
+
           <Nav className="mr-auto">
 
           <LinkContainer to='/cart'>

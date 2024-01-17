@@ -5,6 +5,7 @@ import Product from '../components/Product'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import {listProducts} from '../actions/productActions'
+import { useLocation } from "react-router-dom";
 
 
 
@@ -14,9 +15,12 @@ function HomeScreen() {
     const productList = useSelector(state => state.productList)
     const {products,loading,error} = productList
 
+    const location = useLocation()
+    const keyword = new URLSearchParams(location.search).get('keyword')
+
     useEffect(()=>{
-        dispatch(listProducts())
-    },[dispatch])
+        dispatch(listProducts(keyword))
+    },[dispatch,keyword])
 
 
   return (

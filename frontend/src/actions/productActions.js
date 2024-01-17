@@ -23,27 +23,34 @@ import {
 } from "../constants/productConstants";
 import axios from "axios";
 
-export const listProducts = () => async (dispatch) => {
-  try {
-    dispatch({ type: PRODUCT_LIST_REQUEST });
+export const listProducts = (keyword = '') => async (dispatch) => {
+    try {
+        dispatch({ type: PRODUCT_LIST_REQUEST })
 
-    const { data } = await axios.get("/api/products/");
+        let url = '/api/products'; 
+        
+        console.log('urlkeyword',keyword)
+        if (keyword) {
+            url += `?keyword=${keyword}`; 
+        }
+        console.log('finalurl',url)
 
-    console.log({data})
-    dispatch({
-      type: PRODUCT_LIST_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: PRODUCT_LIST_FAIL,
-      payload:
-        error.response && error.response.data.detail
-          ? error.response.data.detail
-          : error.message,
-    });
-  }
-};
+        const { data } = await axios.get(url)
+
+        dispatch({
+            type: PRODUCT_LIST_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_LIST_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
 
 export const listProductDetails = (id) => async (dispatch) => {
   try {
