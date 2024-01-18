@@ -12,7 +12,7 @@ function SearchBox() {
         e.preventDefault()
         if (keyword) {
             console.log('search',keyword)
-            navigate(`/?keyword=${keyword.trim()}`)
+            navigate(`/?keyword=${keyword}&page=1`);
         } else {
             navigate(location.pathname)
         }

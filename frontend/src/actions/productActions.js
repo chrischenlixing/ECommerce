@@ -23,19 +23,22 @@ import {
 } from "../constants/productConstants";
 import axios from "axios";
 
-export const listProducts = (keyword = '') => async (dispatch) => {
+export const listProducts = (keyword = '',page = 0) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_LIST_REQUEST })
-
         let url = '/api/products'; 
-        
-        console.log('urlkeyword',keyword)
+ 
         if (keyword) {
             url += `?keyword=${keyword}`; 
         }
-        console.log('finalurl',url)
-
-        const { data } = await axios.get(url)
+        if (!keyword && page){
+            url += `?page=${page}`; 
+        }
+        if (keyword && page){
+            url += `&page=${page}`; 
+        }
+        console.log(url)
+        const { data } = await axios.get(url);
 
         dispatch({
             type: PRODUCT_LIST_SUCCESS,

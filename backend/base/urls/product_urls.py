@@ -13,5 +13,4 @@ urlpatterns = [
     path('delete/<str:pk>/', views.deleteProduct, name="product-delete"),
 
 
-
 ]
