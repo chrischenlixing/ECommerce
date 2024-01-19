@@ -8,7 +8,7 @@ This project involves building a comprehensive eCommerce platform from scratch, 
 ![User](./static/images/user.jpg)
 ### Admin
 ![User](./static/images/UserPage.jpg)
-![Order](./static/images/OrderPage.jpg)
+![Order](./static/images/orders.jpg)
 
 ## Features
 
