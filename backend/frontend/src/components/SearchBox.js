@@ -23,7 +23,6 @@ function SearchBox() {
                 name='q'
                 onChange={(e) => setKeyword(e.target.value)}
                 className='mr-2'
-                style={{ flex: 3}} // Adjust as needed for better control of the width
             />
             <Button
                 type='submit'
