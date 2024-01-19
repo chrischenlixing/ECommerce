@@ -2,6 +2,13 @@
 
 ## Project Overview
 This project involves building a comprehensive eCommerce platform from scratch, utilizing React, Redux for frontend development, and Django with Postgres for the backend. It's designed to simulate a real-world application, providing a robust understanding of full-stack development.
+### User
+![HomePage](./static/images/1.jpg)
+![Checkout](./static/images/checkout.jpg)
+![User](./static/images/user.jpg)
+### Admin
+![User](./static/images/UserPage.jpg)
+![Order](./static/images/OrderPage.jpg)
 
 ## Features
 
